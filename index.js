@@ -58,7 +58,7 @@ async function run() {
     })
 
     
-    app.put('toys/:id', async(req, res) =>{
+    app.put('/toys/:id', async(req, res) =>{
       const id = req.params.id;
       const filter = {_id: new ObjectId(id)};
       const options = { upsert: true };
@@ -66,7 +66,7 @@ async function run() {
       console.log(updatedToy);
       const updateDoc = {
           $set: {
-            title: updatedToy.status,
+            title: updatedToy.title,
             photo: updatedToy.photo,
             price: updatedToy.price,
             category: updatedToy.category,
@@ -74,7 +74,7 @@ async function run() {
             description: updatedToy.description,
           }
       }
-      const result = await bookingCollection.updateOne(filter, updateDoc, options);
+      const result = await toysCollection.updateOne(filter, updateDoc, options);
       res.send(result)
   })
 
