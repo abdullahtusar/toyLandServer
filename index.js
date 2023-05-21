@@ -43,7 +43,7 @@ async function run() {
         const query = {_id: new ObjectId(id)};
         const options = {
             // Include only the `title` and `imdb` fields in the returned document
-            projection: { photo: 1, title: 1, name: 1, email: 1, price: 1, rating: 1,  quantity: 1, rating: 1},
+            projection: { photo: 1, title: 1, name: 1, email: 1, category: 1, price: 1, rating: 1,  quantity: 1, rating: 1, description: 1},
           };
         const result = await toysCollection.findOne(query, options);
         res.send(result);
