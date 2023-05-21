@@ -58,20 +58,20 @@ async function run() {
     })
 
     
-    app.put('/toys/:id', async(req, res) =>{
+    app.put('toys/:id', async(req, res) =>{
       const id = req.params.id;
       const filter = {_id: new ObjectId(id)};
       const options = { upsert: true };
-      const updatedBooking = req.body;
-      console.log(updatedBooking);
+      const updatedToy = req.body;
+      console.log(updatedToy);
       const updateDoc = {
           $set: {
-            title: updatedBooking.status,
-            photo: updatedBooking.photo,
-            price: updatedBooking.price,
-            category: updatedBooking.category,
-            rating: updatedBooking.rating,
-            description: updatedBooking.description,
+            title: updatedToy.status,
+            photo: updatedToy.photo,
+            price: updatedToy.price,
+            category: updatedToy.category,
+            rating: updatedToy.rating,
+            description: updatedToy.description,
           }
       }
       const result = await bookingCollection.updateOne(filter, updateDoc, options);
